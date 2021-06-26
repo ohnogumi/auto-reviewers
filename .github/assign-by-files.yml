@@ -1,0 +1,5 @@
+---
+# you can use glob pattern
+"**":
+  - woefits
+  - '@ohnogumi/rabbit'
