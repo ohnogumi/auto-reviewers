@@ -1,0 +1,17 @@
+name: "Assign Reviewers"
+description: "Assign reviewers based on a file like CODEOWNERS"
+branding:
+  icon: "check"
+  color: "green"
+inputs:
+  token:
+    description: "A github token."
+    required: true
+    default: "default"
+  config:
+    description: "configuration file"
+    required: false
+    default: ".github/assign-reviewers.txt"
+runs:
+  using: "node12"
+  main: 'dist/index.js'

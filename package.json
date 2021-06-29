@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/github": "^5.0.0",
+    "minimatch": "^3.0.4"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.28.6",
+    "eslint": "^7.29.0",
+    "husky": "^6.0.0",
+    "typescript": "^4.3.4"
+  },
+  "name": "assign-reviewers",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ohnogumi/assign-reviewers.git"
+  },
+  "author": "Yusaku Matsuki <ymatzki@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "description": "",
+  "bugs": {
+    "url": "https://github.com/ohnogumi/assign-reviewers/issues"
+  },
+  "homepage": "https://github.com/ohnogumi/assign-reviewers#readme",
+  "scripts": {
+    "build": "ncc build index.js -o dist --minify && git add dist",
+    "prepare": "husky install"
+  }
+}
