@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./
+      - name: Assign Reviewers
+        uses: ohnogumi/auto-reviewers@v0.0.1
         with:
-          # config: ".github/assign-reviewers.txt"
           token: ${{ secrets.PERSONAL_TOKEN }}
-          # token: ${{ secrets.GITHUB_TOKEN }}
