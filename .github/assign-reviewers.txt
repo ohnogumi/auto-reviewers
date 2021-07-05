@@ -1,2 +1,3 @@
 # example file 
 *   @woefits @ohnogumi/rabbit
+.husky @ohnogumi/rabbit
