@@ -1,3 +1,3 @@
 # example file 
-*   @woefits @ohnogumi/rabbit
+index.js   @woefits
 .husky @ohnogumi/rabbit
