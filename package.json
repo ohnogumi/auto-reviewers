@@ -28,5 +28,8 @@
   "scripts": {
     "build": "ncc build index.js -o dist --minify && git add dist",
     "prepare": "husky install"
+  },
+  "hooks": {
+    "pre-commit": "yarn build"
   }
 }
