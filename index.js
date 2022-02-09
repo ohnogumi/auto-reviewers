@@ -67,13 +67,13 @@ async function run() {
     pr.requested_teams.forEach((value) => {
       teamReviewers.push(value.name);
     });
-
+    console.log(JSON.stringify(github.context));
     // set reviewers
     await octokit.rest.pulls.requestReviewers({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       pull_number: github.context.payload.pull_request.number,
-      reviewers: reviewers.filter((v) => v).filter(unique),
+      reviewers: reviewers.filter((v) => v && v !== github.context.actor).filter(unique),
       team_reviewers: teamReviewers.filter((v) => v).filter(unique),
     });
 
