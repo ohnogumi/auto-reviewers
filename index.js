@@ -1,13 +1,13 @@
-const fs = require('fs');
-const readline = require('readline');
-const core = require('@actions/core');
-const github = require('@actions/github');
-const minimatch = require('minimatch');
+const fs = require("fs");
+const readline = require("readline");
+const core = require("@actions/core");
+const github = require("@actions/github");
+const minimatch = require("minimatch");
 
 async function run() {
   try {
-    const token = core.getInput('token');
-    const config = core.getInput('config');
+    const token = core.getInput("token");
+    const config = core.getInput("config");
     const octokit = github.getOctokit(token);
 
     // get changed files
@@ -26,7 +26,7 @@ async function run() {
     });
     for await (const line of reader) {
       // delete comment and split line
-      const splitLine = line.replace(/#.*$/, '').split(/( +|\t+)/);
+      const splitLine = line.replace(/#.*$/, "").split(/( +|\t+)/);
       if (splitLine.length < 2) {
         continue;
       }
@@ -44,13 +44,13 @@ async function run() {
     const teamPrefix = `@${github.context.repo.owner}/`;
     const teamRegex = new RegExp(`^${teamPrefix}`);
     for await (const nom of noms) {
-      if (!nom.startsWith('@')) {
+      if (!nom.startsWith("@")) {
         continue;
       }
       if (nom.startsWith(teamPrefix)) {
-        teamReviewers.push(nom.replace(teamRegex, ''));
+        teamReviewers.push(nom.replace(teamRegex, ""));
       } else {
-        reviewers.push(nom.replace(/^@/, ''));
+        reviewers.push(nom.replace(/^@/, ""));
       }
     }
 
@@ -80,13 +80,12 @@ async function run() {
       reviewers: filteredReviewers,
       team_reviewers: teamReviewers.filter((v) => v).filter(unique),
     });
-
     // show result
-    core.info('success to assign reviewers');
+    core.info("success to assign reviewers");
     core.info(`reviewers: ${reviewers.filter((v) => v).filter(unique)}`);
     core.info(`teams: ${teamReviewers.filter((v) => v).filter(unique)}`);
   } catch (error) {
-    core.info('failed to assign reviewers ');
+    core.info("failed to assign reviewers ");
     core.setFailed(error);
   }
 }
