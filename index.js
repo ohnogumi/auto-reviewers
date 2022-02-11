@@ -67,16 +67,20 @@ async function run() {
     pr.requested_teams.forEach((value) => {
       teamReviewers.push(value.name);
     });
-
+    
+    //filter reviewers
+    const filteredReviewers = reviewers
+      .filter((v) => v && v !== github.context.actor)
+      .filter(unique);
     // set reviewers
     await octokit.rest.pulls.requestReviewers({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       pull_number: github.context.payload.pull_request.number,
-      reviewers: reviewers.filter((v) => v).filter(unique),
+      reviewers: filteredReviewers,
       team_reviewers: teamReviewers.filter((v) => v).filter(unique),
     });
-
+    
     // show result
     core.info("success to assign reviewers");
     core.info(`reviewers: ${reviewers.filter((v) => v).filter(unique)}`);
