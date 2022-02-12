@@ -26,7 +26,7 @@ This action assign reviewers based on a file like [CODEOWNERS](https://docs.gith
        runs-on: ubuntu-latest
        steps:
          - uses: actions/checkout@v1
-         - uses: ohnogumi/assign-reviewers@v0.0.4
+         - uses: ohnogumi/assign-reviewers@v0.0.5
            with:
             # required
             # If you assign team for reviewer, you generate a personal access tokens with workflow scope. 
