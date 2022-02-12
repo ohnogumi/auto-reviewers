@@ -1,4 +1,0 @@
----
-# you can use glob pattern
-"**":
-  - '@ohnogumi/rabbit'
