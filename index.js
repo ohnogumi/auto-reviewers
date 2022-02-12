@@ -67,7 +67,7 @@ async function run() {
     pr.requested_teams.forEach((value) => {
       teamReviewers.push(value.name);
     });
-    
+
     //filter reviewers
     const filteredReviewers = reviewers
       .filter((v) => v && v !== github.context.actor)
@@ -80,7 +80,7 @@ async function run() {
       reviewers: filteredReviewers,
       team_reviewers: teamReviewers.filter((v) => v).filter(unique),
     });
-    
+
     // show result
     core.info("success to assign reviewers");
     core.info(`reviewers: ${reviewers.filter((v) => v).filter(unique)}`);
